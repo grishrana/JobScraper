@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <h1>Job List</h1>
+{% endblock header %}
+
+{% block main %}
+
+  <hr>
+  {% for cmp in companies %}
+    
+    <h2>{{ cmp }}</h2>
+    <b>Skills Required: </b> {{ skills_cmp[loop.index0] }}
+    <br>
+    <b>Posted Date: </b> {{ posted_dates[loop.index0] }}
+    <hr>
+
+
+  {% endfor %}
+
+
+{% endblock main %}

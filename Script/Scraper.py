@@ -3,9 +3,10 @@ import requests
 
 
 class Scraper:
-    def __init__(self):
+    def __init__(self, search_item):
+        parsed_search_item = "+".join(search_item.split(" "))
         html_text = requests.get(
-            "https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&searchTextSrc=as&searchTextText=%22Data+Science%22&txtKeywords=%22Data+Science%22%2C&txtLocation="
+            f"https://www.timesjobs.com/candidate/job-search.html?from=submit&luceneResultSize=25&txtKeywords={parsed_search_item}&postWeek=60&searchType=personalizedSearch&actualTxtKeywords={parsed_search_item}e&searchBy=0&rdoOperator=OR&pDate=I&sequence=1&startPage=1"
         ).text
 
         self.soup = BeautifulSoup(html_text, "lxml")
@@ -46,6 +47,7 @@ class Scraper:
 
 
 if __name__ == "__main__":
-    scrapper = Scraper()
+    search_item = input("Enter Skill, Designation: ")
+    scrapper = Scraper(search_item)
     scrapper.scrape()
     scrapper.display_data()

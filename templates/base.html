@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Default title{% endblock title %}</title>
+    {% block css %}
+    {% endblock css %}
+  </head>
+  <body>
+    <header>
+      {% block header %}
+      {% endblock header %}
+    </header>
+    <main>
+      {% block form %}
+        <form action="{{url_for('search')}}", method="get">
+          
+        <input type="text" name="search_item" placeholder="Enter Skills, Designation etc." required>
+        <input type="submit" name="search" value="Search">
+
+        </form>
+      {% endblock form %}
+
+      {% block main %}
+      {% endblock main %}
+    </main>
+
+    <footer>
+      {% block footer %}
+      {% endblock footer %}
+    </footer>
+
+    
+    {% block js %}
+    {% endblock js %}
+  
+  </body>
+</html>
